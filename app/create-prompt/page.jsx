@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -10,10 +11,7 @@ const CreatePrompt = () => {
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({
-    prompt: '',
-    tag: '',
-  });
+  const [post, setPost] = useState({ prompt: '', tag: '' });
 
   const createPrompt = async (e) => {
     e.preventDefault();
@@ -28,6 +26,7 @@ const CreatePrompt = () => {
           tag: post.tag,
         }),
       });
+
       if (response.ok) {
         router.push('/');
       }
